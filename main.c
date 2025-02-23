@@ -46,6 +46,8 @@ void scramble( char *arr)
        //rand() function comes from 'stdlib.h' library
        pos1 = rand() % len ;    
        pos2 = rand() % len ;    
+      
+    }
 
 int main()
 {
