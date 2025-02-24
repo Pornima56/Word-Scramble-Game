@@ -6,12 +6,11 @@
 #include <stdbool.h>  //for boolean variables
 
 /*****************************Global Variables*************************************/
-char Temp ;
 
 
 void scramble( char *arr)
 {
-  int len, pos1 ; 
+  int len, pos1, token ; 
   char original[length + 1] ;
   strcpy( original, arr ) ;   //this will copy the string from arr to original to keep the inmocified copy of the string to compare the scrambled version if the string later on
   
@@ -31,26 +30,36 @@ void scramble( char *arr)
   if(len == 2)  //if the length of the string is 2 
   {
       //then do swapping
-      temp = arr[0] ;
+      char  temp = arr[0] ;
       arr[0] = arr[1] ;
       arr[1] = temp ;
     return ;  //We will return and terminate the case
   }
 
+  double different =  0 ;
   //If the length is more than two characters we will handle it more carefully
   do
   {
-    int token = 0 ;
+    token = 0 ;
     while ( token < len )
     {
        //rand() function comes from 'stdlib.h' library
-       pos1 = rand() % len ;    
+       pos1 = rand() % len ;    //This results in integer between  0 and len - 1
        pos2 = rand() % len ;    
-      
+       //Now we have 2 random positions in a string 
+       //To scramble this string we will swap the characters at those positions
+       if( pos != pos2 )
+       {
+         char temp = arr[pos1] ;
+         arr[pos1] = arr[pos2] ;
+         arr[pos2] = temp ;
+         token++ ;
+       }
     }
 
 int main()
 {
-  
+  //When we return function time as NULL as an argument it return current time 
+  srand(time(NULL)) ; //This gives us a random number everytime it runs
 return 0 ;
 }
