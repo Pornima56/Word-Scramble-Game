@@ -36,7 +36,8 @@ void scramble( char *arr)
     return ;  //We will return and terminate the case
   }
 
-  double different =  0 ;
+  double different =  0 ;  //checks to see if the string is sufficiently scrambled
+  bool match_start = false, match_end = false ; 
   //If the length is more than two characters we will handle it more carefully
   do
   {
@@ -56,6 +57,23 @@ void scramble( char *arr)
          token++ ;
        }
     }
+  int unique = 0 ;
+  for( int counter = 0 ; counter < len ; counter++)
+  {  
+    if( original[counter] != arr[j] )
+      {
+        unique++ ;      //this will count the number of uniques
+        differences = (double) unique / len ;
+        match_start = arr[0] == original[0] ;
+        match_end = arr[len - 1] == original[len - 1] ;
+      }
+      while( ( match_start && match_end ) || unique < 0.5 )
+      {
+        
+      }
+  }
+}
+  
 
 int main()
 {
