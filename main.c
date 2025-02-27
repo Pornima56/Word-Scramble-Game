@@ -10,16 +10,16 @@
 
 void scramble( char *arr)
 {
-  int len, pos1, token ; 
-  char original[length + 1] ;
-  strcpy( original, arr ) ;   //this will copy the string from arr to original to keep the inmocified copy of the string to compare the scrambled version if the string later on
+  int len, pos1, pos2, token ; 
   
   len = strlen( arr ) ;
+  char original[len + 1] ;
+  strcpy( original, arr ) ;   //this will copy the string from arr to original to keep the inmocified copy of the string to compare the scrambled version if the string later on
 
   for( int counter = 0 ; counter < len ; counter++)  //this will go from 0 to length of the string
   {
       //Here tolower() is the inbuilt function of 'ctype.h' library
-      //it converts each character to lowercase and stores it in arr[] array
+      //Converts each character to lowercase and stores it in arr[] array
       arr[counter] = tolower( arr[counter] ) ;  
   }
 //Now we will take care of couple special cases seperately
@@ -39,8 +39,6 @@ void scramble( char *arr)
   double different =  0 ;  //checks to see if the string is sufficiently scrambled
   bool match_start = false, match_end = false ; 
   //If the length is more than two characters we will handle it more carefully
-  do
-  {
     token = 0 ;
     while ( token < len )
     {
@@ -49,7 +47,7 @@ void scramble( char *arr)
        pos2 = rand() % len ;    
        //Now we have 2 random positions in a string 
        //To scramble this string we will swap the characters at those positions
-       if( pos != pos2 )
+       if( pos1 != pos2 )
        {
          char temp = arr[pos1] ;
          arr[pos1] = arr[pos2] ;
@@ -57,27 +55,35 @@ void scramble( char *arr)
          token++ ;
        }
     }
-  int unique = 0 ;
-  for( int counter = 0 ; counter < len ; counter++)
-  {  
-    if( original[counter] != arr[j] )
-      {
-        unique++ ;      //this will count the number of uniques
-        differences = (double) unique / len ;
-        match_start = arr[0] == original[0] ;
-        match_end = arr[len - 1] == original[len - 1] ;
-      }
-      while( ( match_start && match_end ) || unique < 0.5 )
-      {
-        
-      }
-  }
 }
-  
 
 int main()
 {
+  char original[100] = "books" ;
+  char scrambled[100] ;  //Array to hold the scrambled word
+  char answer[100] ;
+  bool game_over ;
+  
   //When we return function time as NULL as an argument it return current time 
   srand(time(NULL)) ; //This gives us a random number everytime it runs
+  
+  strcpy( scrambled, original ) ;
+  scramble( scrambled ) ;
+
+  game_over = false ;
+  while( !game_over )
+    {
+      printf(" Unscramble the word : %s\n ", scrambled ) ;
+      printf(" Answer: ") ;
+      scanf("%s", answer) ;
+
+      if(strcmp(answer,original) == 0 )
+      {
+          printf("\n  You get it  \n") ; 
+          game_over = true ; 
+      } 
+      else
+        printf("\n Try again \n ") ;
+    }
 return 0 ;
 }
