@@ -11,6 +11,9 @@ How to Play
 2. You enter your guess.
 3. If correct, you win! If not, try again.
 
+Game Screenshot 
+( https://github.com/Pornima56/Word-Scramble-Game/blob/main/Word-Scramble%20Game%20result.png )
+
 To-Do ( Future Improvements )
 - Add Difficulty Levels
 - Implement a Scoring System
